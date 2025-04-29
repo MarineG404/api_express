@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"username": "marine",
+		"password": "$2b$10$BPLRKfF2/KRYchTyXT1vJucBuV5BME8.0q9GmQ1YMmYi6gwFNvbcS",
+		"collection": []
+	},
+	{
+		"id": 2,
+		"username": "aaaa",
+		"password": "$2b$10$2YrvT6MHJQwElWOWTm1Y4OW1uL4cG7.iuzVFxj81uXZ0tdQbCPLjW",
+		"collection": []
+	}
+]
