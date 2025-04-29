@@ -14,10 +14,31 @@ function OpenBooster(req, res) {
 		return res.status(403).json({ message: "Vous devez attendre 5 avant d'ouvrir un autre booster." });
 	}
 
+	const commons = data_cards.filter(card => card.rarity === "common");
+	const rares = data_cards.filter(card => card.rarity === "rare");
+	const legendaries = data_cards.filter(card => card.rarity === "legendary");
+
 	const booster = [];
 	for (let i = 0; i < 5; i++) {
-		const randomIndex = Math.floor(Math.random() * data_cards.length);
-		const card = data_cards[randomIndex];
+
+		const rand = Math.random();
+		if (rand < 0.80) {
+			chosenRarity = "common";
+		} else if (rand < 0.95) {
+			chosenRarity = "rare";
+		} else {
+			chosenRarity = "legendary";
+		}
+
+		let pool;
+		if (chosenRarity === "common")
+			pool = commons;
+		if (chosenRarity === "rare")
+			pool = rares;
+		if (chosenRarity === "legendary")
+			pool = legendaries;
+
+		const card = pool[Math.floor(Math.random() * pool.length)];
 		booster.push(card);
 	}
 
