@@ -11,7 +11,7 @@ function OpenBooster(req, res) {
 	if (!req.body.token) {
 		return res.status(400).json({ message: "Token manquant" });
 	}
-	
+
 	user = data_users.find(user => user.token === req.body.token);
 
 	if (!user) {
@@ -22,32 +22,20 @@ function OpenBooster(req, res) {
 		return res.status(403).json({ message: "Vous devez attendre 5 min avant d'ouvrir un autre booster." });
 	}
 
-	const commons = data_cards.filter(card => card.rarity === "common");
-	const rares = data_cards.filter(card => card.rarity === "rare");
-	const legendaries = data_cards.filter(card => card.rarity === "legendary");
-
 	const booster = [];
-	const rand = Math.random();
 
 	for (let i = 0; i < 5; i++) {
+		const rand = Math.random();
 
 		if (rand < 0.80) {
-			chosenRarity = "common";
+			cards = data_cards.filter(card => card.rarity === "common")
 		} else if (rand < 0.95) {
-			chosenRarity = "rare";
+			cards = data_cards.filter(card => card.rarity === "rare")
 		} else {
-			chosenRarity = "legendary";
+			cards = data_cards.filter(card => card.rarity === "legendary")
 		}
 
-		let pool;
-		if (chosenRarity === "common")
-			pool = commons;
-		if (chosenRarity === "rare")
-			pool = rares;
-		if (chosenRarity === "legendary")
-			pool = legendaries;
-
-		const card = pool[Math.floor(Math.random() * pool.length)];
+		const card = cards[Math.floor(Math.random() * cards.length)];
 		booster.push(card);
 	}
 
