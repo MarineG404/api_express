@@ -303,10 +303,60 @@
         "id": 7,
         "name": "Carapuce",
         "rarity": "common"
+      },
+      {
+        "id": 19,
+        "name": "Rattata",
+        "rarity": "common"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      },
+      {
+        "id": 10,
+        "name": "Chenipan",
+        "rarity": "common"
+      },
+      {
+        "id": 16,
+        "name": "Roucool",
+        "rarity": "common"
+      },
+      {
+        "id": 16,
+        "name": "Roucool",
+        "rarity": "common"
+      },
+      {
+        "id": 16,
+        "name": "Roucool",
+        "rarity": "common"
+      },
+      {
+        "id": 10,
+        "name": "Chenipan",
+        "rarity": "common"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 16,
+        "name": "Roucool",
+        "rarity": "common"
+      },
+      {
+        "id": 10,
+        "name": "Chenipan",
+        "rarity": "common"
       }
     ],
     "token": "df44bhefjcebcf",
-    "lastBooster": 1745924070632
+    "lastBooster": 1745946788364
   },
   {
     "id": 2,

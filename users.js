@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = "./data/users.json"; // ton chemin vers le fichier
 const bcrypt = require('bcrypt');
 const TokenGenerator = require('token-generator')({
 	salt: 'your secret ingredient for this magic recipe',
@@ -7,7 +6,7 @@ const TokenGenerator = require('token-generator')({
 });
 
 function RegisterUser(req, res) {
-	const data_users = JSON.parse(fs.readFileSync(path, "utf8"));
+	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
 
 	if (!req.body) {
 		res.status(400).json({ "message": "Erreur : Aucune données envoyées" });
@@ -34,24 +33,23 @@ function RegisterUser(req, res) {
 			return;
 		};
 
-		password = hash;
+		data_users.push(
+			{
+				"id": data_users.length + 1,
+				"username": username,
+				"password": hash,
+				"collection": []
+			}
+		);
 
-		addData = {
-			"id": data_users.length + 1,
-			"username": username,
-			"password": password,
-			"collection": []
-		}
-		data_users.push(addData);
-
-		fs.writeFileSync(path, JSON.stringify(data_users, null, 2), "utf8");
+		fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
 
 		res.json(data_users)
 	});
 }
 
 function Login(req, res) {
-	const data_users = JSON.parse(fs.readFileSync(path, "utf8"));
+	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
 
 	if (!req.body) {
 		res.status(400).json({ "message": "Erreur : Aucune données envoyées" });
@@ -75,10 +73,6 @@ function Login(req, res) {
 
 	bcrypt.compare(password, user.password, (err, result) => {
 
-		var token = TokenGenerator.generate();
-
-		user.token = token;
-
 		if (!result) {
 			res.status(401).json(
 				{
@@ -86,7 +80,10 @@ function Login(req, res) {
 				}
 			);
 		} else {
-			fs.writeFileSync(path, JSON.stringify(data_users, null, 2), "utf8");
+			var token = TokenGenerator.generate();
+			user.token = token;
+			fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
+
 			res.json(
 				{
 					message: "Autentification réussie",
@@ -100,7 +97,7 @@ function Login(req, res) {
 }
 
 function GetUser(req, res) {
-	const data_users = JSON.parse(fs.readFileSync(path, "utf8"));
+	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
 
 	if (!req.body) {
 		return res.status(400).json({ message: "Token manquant" });
@@ -127,9 +124,13 @@ function GetUser(req, res) {
 }
 
 function Disconnect(req, res) {
-	const data_users = JSON.parse(fs.readFileSync(path, "utf8"));
+	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
 
 	if (!req.body) {
+		return res.status(400).json({ message: "Body manquant" });
+	}
+
+	if (!req.body.token) {
 		return res.status(400).json({ message: "Token manquant" });
 	}
 
@@ -143,7 +144,7 @@ function Disconnect(req, res) {
 
 	delete user.token;
 
-	fs.writeFileSync(path, JSON.stringify(data_users, null, 2), "utf8");
+	fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
 
 	res.json({ message: "Déconnexion réussie" });
 }

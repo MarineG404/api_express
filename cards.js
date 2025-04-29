@@ -4,6 +4,14 @@ function OpenBooster(req, res) {
 	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
 	const data_cards = JSON.parse(fs.readFileSync("./data/cards.json", "utf8"));
 
+	if (!req.body) {
+		return res.status(400).json({ message: "Body manquant" });
+	}
+
+	if (!req.body.token) {
+		return res.status(400).json({ message: "Token manquant" });
+	}
+	
 	user = data_users.find(user => user.token === req.body.token);
 
 	if (!user) {
@@ -11,7 +19,7 @@ function OpenBooster(req, res) {
 	}
 
 	if (user.lastBooster && Date.now() - user.lastBooster < 300000) {
-		return res.status(403).json({ message: "Vous devez attendre 5 avant d'ouvrir un autre booster." });
+		return res.status(403).json({ message: "Vous devez attendre 5 min avant d'ouvrir un autre booster." });
 	}
 
 	const commons = data_cards.filter(card => card.rarity === "common");
@@ -19,9 +27,10 @@ function OpenBooster(req, res) {
 	const legendaries = data_cards.filter(card => card.rarity === "legendary");
 
 	const booster = [];
+	const rand = Math.random();
+
 	for (let i = 0; i < 5; i++) {
 
-		const rand = Math.random();
 		if (rand < 0.80) {
 			chosenRarity = "common";
 		} else if (rand < 0.95) {
@@ -42,12 +51,10 @@ function OpenBooster(req, res) {
 		booster.push(card);
 	}
 
-	user.collection = user.collection || [];
 	user.collection.push(...booster);
 
 	res.status(200).json({
-		"message": "Booster ouvert avec succès"
-		,
+		"message": "Booster ouvert avec succès",
 		"data": {
 			"booster": booster,
 			"collection": user.collection

@@ -3,8 +3,6 @@ const app = express();
 const users = require("./users");
 const cards = require("./cards");
 
-// app.use(express.json());
-
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
 
