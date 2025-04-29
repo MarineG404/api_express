@@ -15,13 +15,63 @@
 		"rarity": "common"
 	},
 	{
+		"id": 10,
+		"name": "Chenipan",
+		"rarity": "common"
+	},
+	{
+		"id": 16,
+		"name": "Roucool",
+		"rarity": "common"
+	},
+	{
+		"id": 19,
+		"name": "Rattata",
+		"rarity": "common"
+	},
+	{
 		"id": 25,
 		"name": "Pikachu",
 		"rarity": "rare"
 	},
 	{
+		"id": 37,
+		"name": "Goupix",
+		"rarity": "rare"
+	},
+	{
+		"id": 58,
+		"name": "Caninos",
+		"rarity": "rare"
+	},
+	{
+		"id": 133,
+		"name": "Évoli",
+		"rarity": "rare"
+	},
+	{
+		"id": 144,
+		"name": "Artikodin",
+		"rarity": "legendary"
+	},
+	{
+		"id": 145,
+		"name": "Électhor",
+		"rarity": "legendary"
+	},
+	{
+		"id": 146,
+		"name": "Sulfura",
+		"rarity": "legendary"
+	},
+	{
 		"id": 150,
 		"name": "Mewtwo",
+		"rarity": "legendary"
+	},
+	{
+		"id": 151,
+		"name": "Mew",
 		"rarity": "legendary"
 	}
 ]

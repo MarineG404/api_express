@@ -1,14 +1,167 @@
 [
-	{
-		"id": 1,
-		"username": "marine",
-		"password": "$2b$10$BPLRKfF2/KRYchTyXT1vJucBuV5BME8.0q9GmQ1YMmYi6gwFNvbcS",
-		"collection": []
-	},
-	{
-		"id": 2,
-		"username": "aaaa",
-		"password": "$2b$10$2YrvT6MHJQwElWOWTm1Y4OW1uL4cG7.iuzVFxj81uXZ0tdQbCPLjW",
-		"collection": []
-	}
+  {
+    "id": 1,
+    "username": "marine",
+    "password": "$2b$10$BPLRKfF2/KRYchTyXT1vJucBuV5BME8.0q9GmQ1YMmYi6gwFNvbcS",
+    "collection": [
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      },
+      {
+        "id": 4,
+        "name": "Salamèche",
+        "rarity": "common"
+      },
+      {
+        "id": 4,
+        "name": "Salamèche",
+        "rarity": "common"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 150,
+        "name": "Mewtwo",
+        "rarity": "legendary"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 58,
+        "name": "Caninos",
+        "rarity": "rare"
+      },
+      {
+        "id": 144,
+        "name": "Artikodin",
+        "rarity": "legendary"
+      },
+      {
+        "id": 145,
+        "name": "Électhor",
+        "rarity": "legendary"
+      },
+      {
+        "id": 19,
+        "name": "Rattata",
+        "rarity": "common"
+      },
+      {
+        "id": 58,
+        "name": "Caninos",
+        "rarity": "rare"
+      },
+      {
+        "id": 150,
+        "name": "Mewtwo",
+        "rarity": "legendary"
+      },
+      {
+        "id": 4,
+        "name": "Salamèche",
+        "rarity": "common"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      },
+      {
+        "id": 151,
+        "name": "Mew",
+        "rarity": "legendary"
+      },
+      {
+        "id": 37,
+        "name": "Goupix",
+        "rarity": "rare"
+      },
+      {
+        "id": 16,
+        "name": "Roucool",
+        "rarity": "common"
+      },
+      {
+        "id": 19,
+        "name": "Rattata",
+        "rarity": "common"
+      },
+      {
+        "id": 1,
+        "name": "Bulbizarre",
+        "rarity": "common"
+      },
+      {
+        "id": 133,
+        "name": "Évoli",
+        "rarity": "rare"
+      },
+      {
+        "id": 37,
+        "name": "Goupix",
+        "rarity": "rare"
+      },
+      {
+        "id": 10,
+        "name": "Chenipan",
+        "rarity": "common"
+      },
+      {
+        "id": 10,
+        "name": "Chenipan",
+        "rarity": "common"
+      },
+      {
+        "id": 144,
+        "name": "Artikodin",
+        "rarity": "legendary"
+      },
+      {
+        "id": 7,
+        "name": "Carapuce",
+        "rarity": "common"
+      }
+    ],
+    "token": "df44bhefjcebcf",
+    "lastBooster": 1745923150696
+  },
+  {
+    "id": 2,
+    "username": "aaaa",
+    "password": "$2b$10$2YrvT6MHJQwElWOWTm1Y4OW1uL4cG7.iuzVFxj81uXZ0tdQbCPLjW",
+    "collection": []
+  }
 ]
