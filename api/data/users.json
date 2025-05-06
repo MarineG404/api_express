@@ -6,8 +6,32 @@
     "currency": 0,
     "collection": [
       {
+        "id": 8,
+        "name": "Carabaffe",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 69,
+        "name": "Chétiflor",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
         "id": 133,
         "name": "Évoli",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 92,
+        "name": "Fantominus",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 75,
+        "name": "Gravalanch",
         "rarity": "common",
         "nb": 1
       },
@@ -24,8 +48,38 @@
         "nb": 1
       },
       {
+        "id": 129,
+        "name": "Magicarpe",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 52,
+        "name": "Miaouss",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
         "id": 48,
         "name": "Mimitoss",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 41,
+        "name": "Nosferapti",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 44,
+        "name": "Ortide",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 46,
+        "name": "Paras",
         "rarity": "common",
         "nb": 1
       },
@@ -34,8 +88,15 @@
         "name": "Têtarte",
         "rarity": "common",
         "nb": 1
+      },
+      {
+        "id": 132,
+        "name": "Métamorph",
+        "rarity": "legendary",
+        "nb": 1
       }
     ],
-    "lastBooster": 1746550264847
+    "lastBooster": 1746551730250,
+    "token": "1854bhegffeiac"
   }
 ]

@@ -3,7 +3,7 @@
 require_once(__DIR__ . '../../../config.php');
 require_once(BASE_PATH . "/includes/header.php");
 
-if (isset($_SESSION["token"])){
+if (isset($_SESSION["token"])) {
 	header("Location: " . BASE_URL . "/pages/error/denied.php");
 	exit;
 }
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 
 	// Initialiser cURL
-	$ch = curl_init(API_BASE_URL . "login");
+	$ch = curl_init(API_BASE_URL . "/login");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
@@ -71,5 +71,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 
 <?php
-require_once(BASE_PATH . "/includes/footer.php");
+	require_once(BASE_PATH . "/includes/footer.php");
 ?>

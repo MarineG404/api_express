@@ -57,8 +57,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			</div>
 		</div>
 	<?php } ?>
-	<a href="<?= BASE_URL; ?>pages/auth/user.php" class="btn btn-success m-2">Voir ma collection</a>
 </div>
+
+<?php if (!empty($cards)): ?>
+	<div class="text-center mt-4">
+		<a href="<?= BASE_URL; ?>pages/auth/user.php" class="btn btn-success btn-lg">Voir ma collection</a>
+	</div>
+<?php endif; ?>
 
 <form method="POST">
 	<div class="d-grid gap-2 mt-3">
