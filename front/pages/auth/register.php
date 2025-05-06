@@ -3,10 +3,10 @@
 require_once(__DIR__ . '../../../config.php');
 require_once(BASE_PATH . "/includes/header.php");
 
-// if (isset($_SESSION["token"])){
-// 	header("Location: pages/error/denied.php");
-// 	exit;
-// }
+if (isset($_SESSION["token"])){
+	header("Location: " . BASE_URL . "/pages/error/denied.php");
+	exit;
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$username = $_POST["username"] ?? "";
@@ -59,14 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		<div class="row">
 			<h1>Inscription</h1>
 			<div class="mb-3">
-				<label for="username" class="form-label">Nom d"utilisateur</label>
+				<label for="username" class="form-label">Nom d'utilisateur</label>
 				<input type="text" class="form-control" id="username" name="username" required>
 			</div>
 			<div class="mb-3">
 				<label for="password" class="form-label">Mot de passe</label>
 				<input type="password" class="form-control" id="password" name="password" required>
 			</div>
-			<button type="submit" class="btn btn-primary">S"inscrire</button>
+			<button type="submit" class="btn btn-primary">S'inscrire</button>
 		</div>
 	</fieldset>
 </form>

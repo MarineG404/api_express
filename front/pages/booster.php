@@ -4,6 +4,11 @@ require_once(BASE_PATH . "/includes/header.php");
 
 $cards = [];
 
+if (!isset($_SESSION["token"])){
+	header("Location: " . BASE_URL . "/pages/error/denied.php");
+	exit;
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$data = [
 		"token" => $_SESSION["token"] ?? ""

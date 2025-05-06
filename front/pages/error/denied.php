@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../config.php');
+require_once(__DIR__ . '../../../config.php');
 require_once(BASE_PATH . "/includes/header.php");
 
 echo "<h1>Accès refusé</h1>";

@@ -3,6 +3,11 @@
 require_once(__DIR__ . '../../../config.php');
 require_once(BASE_PATH . "/includes/header.php");
 
+if (!isset($_SESSION["token"])){
+	header("Location: " . BASE_URL . "/pages/error/denied.php");
+	exit;
+}
+
 $data = [
 	"token" => $_SESSION["token"] ?? ""
 ];

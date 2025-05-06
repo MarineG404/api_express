@@ -1,1 +1,41 @@
-[]
+[
+  {
+    "id": 1,
+    "username": "marine",
+    "password": "$2b$10$Uxzmxg6o4OkaJ0p/rfQ.Cu5tCza9hz133wU7jucUxext582y3fhGK",
+    "currency": 0,
+    "collection": [
+      {
+        "id": 133,
+        "name": "Évoli",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 64,
+        "name": "Kadabra",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 90,
+        "name": "Kokiyas",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 48,
+        "name": "Mimitoss",
+        "rarity": "common",
+        "nb": 1
+      },
+      {
+        "id": 61,
+        "name": "Têtarte",
+        "rarity": "common",
+        "nb": 1
+      }
+    ],
+    "lastBooster": 1746550264847
+  }
+]
