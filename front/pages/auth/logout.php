@@ -3,13 +3,13 @@
 	require_once("../../includes/header.php");
 
 	$data = [
-		"token" => $_SESSION['token'] ?? ''
+		"token" => $_SESSION["token"] ?? ""
 	];
 	// Initialiser cURL
-	$ch = curl_init(API_BASE_URL . '/disconnect');
+	$ch = curl_init(API_BASE_URL . "/disconnect");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 	// Exécuter la requête
@@ -23,10 +23,10 @@
 	} elseif ($httpCode === 200 || $httpCode === 201) {
 		$_SESSION = array();
 		session_destroy();
-		header(header: 'Location: ' . BASE_URL . 'index.php');
+		header(header: "Location: " . BASE_URL . "index.php");
 	} else {
 		$json = json_decode($response, true);
-		$message = $json['message'] ?? $json['Erreur'] ?? 'Une erreur est survenue';
+		$message = $json["message"] ?? $json["Erreur"] ?? "Une erreur est survenue";
 		echo "<div class='alert alert-danger'>Erreur ($httpCode) : $message</div>";
 	}
 

@@ -3,14 +3,14 @@
 require_once("../../includes/header.php");
 
 $data = [
-	"token" => $_SESSION['token'] ?? ''
+	"token" => $_SESSION["token"] ?? ""
 ];
 
 // Initialiser cURL
-$ch = curl_init(API_BASE_URL . '/user');
+$ch = curl_init(API_BASE_URL . "/user");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 // Exécuter la requête
@@ -25,7 +25,7 @@ if ($error) {
 	$data = json_decode($response, true)["data"];
 } else {
 	$json = json_decode($response, true);
-	$message = $json['message'] ?? $json['Erreur'] ?? 'Une erreur est survenue';
+	$message = $json["message"] ?? $json["Erreur"] ?? "Une erreur est survenue";
 	echo "<div class='alert alert-danger'>Erreur ($httpCode) : $message</div>";
 }
 
@@ -34,20 +34,20 @@ $username = $data["username"];
 $collection = $data["collection"];
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	// Préparer les données
 	$data = [
-		'token' => $_SESSION['token'] ?? '',
-		'idcard' => $_POST['idcard'] ?? ''
+		"token" => $_SESSION["token"] ?? "",
+		"idcard" => $_POST["idcard"] ?? ""
 	];
 	error_log(json_encode($data));
 
 	// Initialiser cURL
-	$ch = curl_init(API_BASE_URL . '/convert');
+	$ch = curl_init(API_BASE_URL . "/convert");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 	// Exécuter la requête
@@ -59,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($error) {
 		echo "<div class='alert alert-danger'>Erreur cURL : $error</div>";
 	} elseif ($httpCode === 200 || $httpCode === 201) {
-		header("Location: " . $_SERVER['PHP_SELF']);
+		header("Location: " . $_SERVER["PHP_SELF"]);
 		exit;
 	} else {
 		$json = json_decode($response, true);
-		$message = $json['message'] ?? $json['Erreur'] ?? 'Une erreur est survenue';
+		$message = $json["message"] ?? $json["Erreur"] ?? "Une erreur est survenue";
 		echo "<div class='alert alert-danger'>Erreur ($httpCode) : $message</div>";
 	}
 }

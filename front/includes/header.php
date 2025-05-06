@@ -11,5 +11,5 @@
 </head>
 
 <body data-bs-theme="light">
-	<?php include('navbar.php'); ?>
+	<?php include("navbar.php"); ?>
 	<div class="container">

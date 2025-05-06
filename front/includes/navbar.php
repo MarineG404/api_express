@@ -9,14 +9,14 @@
 				<li class="nav-item">
 					<a class="nav-link" href="<?= BASE_URL; ?>pages/cards.php">Cartes</a>
 				</li>
-				<?php if (isset($_SESSION['token'])): ?>
+				<?php if (isset($_SESSION["token"])): ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= BASE_URL; ?>pages/booster.php">Booster</a>
 					</li>
 				<?php endif; ?>
 			</ul>
 			<ul class="navbar-nav">
-				<?php if (isset($_SESSION['token'])): ?>
+				<?php if (isset($_SESSION["token"])): ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= BASE_URL; ?>pages/auth/user.php">Mon Profil</a>
 					</li>

@@ -3,15 +3,15 @@ require_once("../includes/header.php");
 
 $cards = [];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$data = [
-		"token" => $_SESSION['token'] ?? ''
+		"token" => $_SESSION["token"] ?? ""
 	];
 
 	$ch = curl_init(API_BASE_URL . "/booster");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 	$response = curl_exec($ch);
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$cards = json_decode($response, true)["data"]["booster"];
 	} else {
 		$json = json_decode($response, true);
-		$message = $json['message'] ?? $json['Erreur'] ?? 'Une erreur est survenue';
+		$message = $json["message"] ?? $json["Erreur"] ?? "Une erreur est survenue";
 		echo "<div class='alert alert-danger'>$message</div>";
 	}
 }

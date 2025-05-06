@@ -1,7 +1,7 @@
 const fs = require("fs");
-const bcrypt = require('bcrypt');
-const TokenGenerator = require('token-generator')({
-	salt: 'your secret ingredient for this magic recipe',
+const bcrypt = require("bcrypt");
+const TokenGenerator = require("token-generator")({
+	salt: "your secret ingredient for this magic recipe",
 	timestampMap: 'abcdefghij',
 });
 
@@ -72,7 +72,7 @@ function Login(req, res) {
 	var user = data_users.find(user => user.username === username);
 
 	if (!user) {
-		res.status(401).json({ "message": "Erreur : Utilisateur non trouvé" });
+		res.status(401).json({ "message": "Echec de l'autentification : Utilisateur non trouvé" });
 		return;
 	}
 
@@ -81,7 +81,7 @@ function Login(req, res) {
 		if (!result) {
 			res.status(401).json(
 				{
-					"message": "Authentification pas réussi : mauvais mot de passe"
+					"message": "Echec de l'autentification : mauvais mot de passe"
 				}
 			);
 		} else {

@@ -4,9 +4,9 @@ require_once("../includes/header.php");
 
 
 // Initialiser cURL
-$ch = curl_init(API_BASE_URL . '/cards');
+$ch = curl_init(API_BASE_URL . "/cards");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 
 // Exécuter la requête
 $response = curl_exec($ch);
@@ -20,7 +20,7 @@ if ($error) {
 	$cards = json_decode($response, true)["data"]["cards"];
 } else {
 	$json = json_decode($response, true);
-	$message = $json['message'] ?? $json['Erreur'] ?? 'Une erreur est survenue';
+	$message = $json["message"] ?? $json["Erreur"] ?? "Une erreur est survenue";
 	echo "<div class='alert alert-danger'>Erreur ($httpCode) : $message</div>";
 }
 ?>

@@ -1,7 +1,7 @@
 const express = require("express");
-const app = express();
 const users = require("./users");
 const cards = require("./cards");
+const app = express();
 
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
 	res.json(
 		{
 			message: "Bienvenue sur l'API TCG",
-			data: {}
 		}
 	);
 });
