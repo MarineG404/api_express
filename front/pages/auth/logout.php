@@ -1,6 +1,7 @@
 <?php
 
-	require_once("../../includes/header.php");
+require_once(__DIR__ . '../../../config.php');
+require_once(BASE_PATH . "/includes/header.php");
 
 	$data = [
 		"token" => $_SESSION["token"] ?? ""
@@ -30,5 +31,5 @@
 		echo "<div class='alert alert-danger'>Erreur ($httpCode) : $message</div>";
 	}
 
-	require_once("../../includes/footer.php");
+	require_once(BASE_PATH . "/includes/footer.php");
 

@@ -1,6 +1,7 @@
 <?php
 
-require_once("../../includes/header.php");
+require_once(__DIR__ . '../../../config.php');
+require_once(BASE_PATH . "/includes/header.php");
 
 $data = [
 	"token" => $_SESSION["token"] ?? ""
@@ -125,5 +126,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 
 <?php
-	require_once("../../includes/footer.php");
+require_once(BASE_PATH . "/includes/footer.php");
 ?>

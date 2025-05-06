@@ -1,6 +1,7 @@
 <?php
 
-require_once("../../includes/header.php");
+require_once(__DIR__ . '../../../config.php');
+require_once(BASE_PATH . "/includes/header.php");
 
 // if (isset($_SESSION["token"])){
 // 	header("Location: pages/error/denied.php");
@@ -71,5 +72,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 
 <?php
-	require_once("../../includes/footer.php");
+require_once(BASE_PATH . "/includes/footer.php");
 ?>

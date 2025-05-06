@@ -1,5 +1,6 @@
 <?php
-require_once("../includes/header.php");
+require_once(__DIR__ . '/../config.php');
+require_once(BASE_PATH . "/includes/header.php");
 
 $cards = [];
 
@@ -61,5 +62,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 
 <?php
-	require_once("../../includes/footer.php");
+require_once(BASE_PATH . "/includes/footer.php");
 ?>
