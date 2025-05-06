@@ -6,6 +6,8 @@ const cards = require("./cards");
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
 	res.json(
 		{
@@ -23,6 +25,8 @@ app.post("/disconnect", users.Disconnect);
 
 // routes cards
 app.post("/booster", cards.OpenBooster);
+app.get("/cards", cards.GetCards);
+app.post("/convert", cards.Convert)
 
 app.listen(3000, () => {
 	console.log("Serveur démarré sur http://localhost:3000");

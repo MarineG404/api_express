@@ -33,18 +33,23 @@ function RegisterUser(req, res) {
 			return;
 		};
 
+		var token = TokenGenerator.generate();
+
 		data_users.push(
 			{
 				"id": data_users.length + 1,
 				"username": username,
 				"password": hash,
-				"collection": []
+				"currency": 0,
+				"collection": [],
+				"token": token
 			}
 		);
 
 		fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
 
-		res.json(data_users)
+		user_token = data_users.find(user => user.username === username).token;
+		res.json({user_token});
 	});
 }
 
@@ -117,6 +122,7 @@ function GetUser(req, res) {
 			data: {
 				id: user.id,
 				username: user.username,
+				currency: user.currency,
 				collection: user.collection
 			}
 		}
