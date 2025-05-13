@@ -8,7 +8,6 @@ $ch = curl_init(API_BASE_URL . "/cards");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 
-// Exécuter la requête
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $error = curl_error($ch);
@@ -28,26 +27,34 @@ if ($error) {
 <div class="d-flex flex-wrap gap-3">
 	<?php
 	foreach ($cards as $card) {
-		if ($card["rarity"] == "common") {
-			$bg = "bg-light";
-		} elseif ($card["rarity"] == "rare") {
-			$bg = "bg-warning";
-		} elseif ($card["rarity"] == "legendary") {
-			$bg = "bg-danger";
-		}
+		$rarity = $card["rarity"];
+		$bg = match ($rarity) {
+			"common" => "bg-light",
+			"rare" => "bg-warning",
+			"legendary" => "bg-danger",
+			default => "bg-secondary"
+		};
+
+		$name = $card["name"];
+		$mapping = json_decode(file_get_contents(BASE_PATH . "/utils/fr_to_en.json"), true);
+		$englishName = $mapping[$card["name"]] ?? null;
+		$imageUrl = $englishName ? "https://img.pokemondb.net/sprites/home/normal/{$englishName}.png" : null;
 		?>
 
 		<div class="card <?= $bg ?>" style="width: 18rem;">
-			<div class="card-header"><?= $card["rarity"] ?></div>
-			<div class="card-body">
-				<h4 class="card-title"><?= $card["name"] ?></h4>
+			<div class="card-header"><?= $rarity ?></div>
+			<div class="card-body text-center">
+				<h4 class="card-title"><?= $name ?></h4>
+				<?php if ($imageUrl): ?>
+					<img src="<?= $imageUrl ?>" alt="<?= $name ?>" class="img-fluid mb-2" style="height: 120px;">
+				<?php else: ?>
+					<p><em>Aucune image disponible</em></p>
+				<?php endif; ?>
 				<p class="card-text"><?= $card["description"] ?></p>
 			</div>
 		</div>
 	<?php } ?>
 </div>
 
-<?php
-require_once(BASE_PATH . "/includes/footer.php");
-?>
+<?php require_once(BASE_PATH . "/includes/footer.php"); ?>
 

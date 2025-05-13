@@ -107,12 +107,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 				break;
 		}
 		$modalId = "modalCard" . $card["id"];
+		$name = $card["name"];
+		$mapping = json_decode(file_get_contents(BASE_PATH . "/utils/fr_to_en.json"), true);
+		$englishName = $mapping[$card["name"]] ?? null;
+		$imageUrl = $englishName ? "https://img.pokemondb.net/sprites/home/normal/{$englishName}.png" : null;
 		?>
 		<div class="card <?= $bg ?>" style="width: 18rem; cursor: pointer;" data-bs-toggle="modal"
 			data-bs-target="#<?= $modalId ?>">
 			<div class="card-header"><?= ucfirst($card["rarity"]) ?></div>
-			<div class="card-body">
-				<h4 class="card-title"><?= $card["name"] ?></h4>
+			<div class="card-body text-center">
+				<h4 class="card-title"><?= $name ?></h4>
+				<?php if ($imageUrl): ?>
+					<img src="<?= $imageUrl ?>" alt="<?= $name ?>" class="img-fluid mb-2" style="height: 120px;">
+				<?php else: ?>
+					<p><em>Aucune image disponible</em></p>
+				<?php endif; ?>
 				<p class="card-text"><?= $card["description"] ?></p>
 				<p class="card-text">x <?= $card["nb"] ?></p>
 			</div>
