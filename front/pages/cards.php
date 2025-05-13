@@ -37,11 +37,11 @@ if ($error) {
 		}
 		?>
 
-		<div class="card <?= $bg ?>" style="width: 18rem;" >
+		<div class="card <?= $bg ?>" style="width: 18rem;">
 			<div class="card-header"><?= $card["rarity"] ?></div>
 			<div class="card-body">
 				<h4 class="card-title"><?= $card["name"] ?></h4>
-				<p class="card-text">Some quick example text...</p>
+				<p class="card-text"><?= $card["description"] ?></p>
 			</div>
 		</div>
 	<?php } ?>
@@ -50,3 +50,4 @@ if ($error) {
 <?php
 require_once(BASE_PATH . "/includes/footer.php");
 ?>
+

@@ -2,101 +2,165 @@
   {
     "id": 1,
     "username": "marine",
-    "password": "$2b$10$Uxzmxg6o4OkaJ0p/rfQ.Cu5tCza9hz133wU7jucUxext582y3fhGK",
-    "currency": 0,
+    "password": "$2b$10$Ao4lHdMDgH6ueNVOMNguv.H4NwMbcHOcBJZJCT0B4kAVWhZHjc.IC",
+    "currency": 5,
     "collection": [
       {
         "id": 8,
         "name": "Carabaffe",
         "rarity": "common",
+        "description": "L'évolution de Carapuce, une tortue plus grande et plus robuste.",
         "nb": 1
       },
       {
-        "id": 69,
-        "name": "Chétiflor",
+        "id": 11,
+        "name": "Chrysacier",
         "rarity": "common",
+        "description": "Un Pokémon de type Insecte, souvent vu sous forme de cocon avant de se transformer en Papilusion.",
         "nb": 1
       },
       {
-        "id": 133,
-        "name": "Évoli",
+        "id": 14,
+        "name": "Coconfort",
         "rarity": "common",
+        "description": "L'évolution d'Aspicot, un cocon solide qui protège l'insecte avant sa métamorphose en Dardargnan.",
         "nb": 1
       },
       {
-        "id": 92,
-        "name": "Fantominus",
+        "id": 98,
+        "name": "Krabby",
         "rarity": "common",
+        "description": "Un petit Pokémon de type Eau, ressemblant à un crabe, qui vit sur les plages et se cache sous les rochers.",
         "nb": 1
       },
       {
-        "id": 75,
-        "name": "Gravalanch",
+        "id": 67,
+        "name": "Machopeur",
         "rarity": "common",
+        "description": "L'évolution de Machoc, plus grand et plus fort, il maîtrise des techniques de combat encore plus puissantes.",
         "nb": 1
       },
       {
-        "id": 64,
-        "name": "Kadabra",
+        "id": 29,
+        "name": "Nidoran♀",
         "rarity": "common",
+        "description": "Un petit Pokémon de type Poison, avec des oreilles longues et des piquants sur le dos, généralement timide mais défensif.",
+        "nb": 2
+      },
+      {
+        "id": 32,
+        "name": "Nidoran♂",
+        "rarity": "common",
+        "description": "Un Pokémon de type Poison, ressemblant à un petit mâle avec des piquants sur le dos et des instincts combatifs.",
         "nb": 1
       },
       {
-        "id": 90,
-        "name": "Kokiyas",
+        "id": 102,
+        "name": "Noeunoeuf",
         "rarity": "common",
-        "nb": 1
-      },
-      {
-        "id": 129,
-        "name": "Magicarpe",
-        "rarity": "common",
-        "nb": 1
-      },
-      {
-        "id": 52,
-        "name": "Miaouss",
-        "rarity": "common",
-        "nb": 1
-      },
-      {
-        "id": 48,
-        "name": "Mimitoss",
-        "rarity": "common",
-        "nb": 1
-      },
-      {
-        "id": 41,
-        "name": "Nosferapti",
-        "rarity": "common",
+        "description": "Un Pokémon de type Plante ressemblant à un œuf de Pâques, qui peut se diviser en plusieurs œufs plus petits.",
         "nb": 1
       },
       {
         "id": 44,
         "name": "Ortide",
         "rarity": "common",
-        "nb": 1
+        "description": "L'évolution de Mystherbe, une plante avec des pétales parfumées, capable de libérer des spores toxiques.",
+        "nb": 2
       },
       {
         "id": 46,
         "name": "Paras",
         "rarity": "common",
+        "description": "Un petit Pokémon de type Insecte et Plante, portant des champignons parasitaires sur son dos.",
         "nb": 1
       },
       {
-        "id": 61,
-        "name": "Têtarte",
+        "id": 118,
+        "name": "Poissirène",
         "rarity": "common",
+        "description": "Un Pokémon de type Eau, ressemblant à un petit poisson coloré, vivant dans les eaux peu profondes des rivières et des lacs.",
         "nb": 1
       },
       {
-        "id": 132,
-        "name": "Métamorph",
+        "id": 19,
+        "name": "Rattata",
+        "rarity": "common",
+        "description": "Un petit Pokémon de type Normal, ressemblant à un rat, souvent vu dans des zones urbaines.",
+        "nb": 1
+      },
+      {
+        "id": 20,
+        "name": "Rattatac",
+        "rarity": "common",
+        "description": "L'évolution de Rattata, un rat plus rapide et plus agressif avec des crocs puissants.",
+        "nb": 1
+      },
+      {
+        "id": 111,
+        "name": "Rhinocorne",
+        "rarity": "common",
+        "description": "Un Pokémon de type Sol et Roche, ressemblant à un rhinocéros, avec une corne dure qu'il utilise pour attaquer ses adversaires.",
+        "nb": 1
+      },
+      {
+        "id": 39,
+        "name": "Rondoudou",
+        "rarity": "common",
+        "description": "Un Pokémon de type Fée et Normal, rond et mignon, capable de chanter pour endormir ses adversaires.",
+        "nb": 1
+      },
+      {
+        "id": 17,
+        "name": "Roucoups",
+        "rarity": "common",
+        "description": "L'évolution de Roucool, un oiseau plus fort et plus rapide, souvent utilisé pour ses compétences en vol.",
+        "nb": 1
+      },
+      {
+        "id": 50,
+        "name": "Taupiqueur",
+        "rarity": "common",
+        "description": "Un petit Pokémon de type Sol, ressemblant à un taupe, qui creuse rapidement des tunnels sous terre.",
+        "nb": 1
+      },
+      {
+        "id": 89,
+        "name": "Grotadmorv",
+        "rarity": "rare",
+        "description": "L'évolution de Tadmorv, une créature plus imposante et malodorante, capable de libérer des gaz toxiques.",
+        "nb": 1
+      },
+      {
+        "id": 82,
+        "name": "Magnéton",
+        "rarity": "rare",
+        "description": "L'évolution de Magnéti, un trio d'aimants qui se regroupent pour former un seul Pokémon de type Électrique et Acier.",
+        "nb": 1
+      },
+      {
+        "id": 95,
+        "name": "Onix",
+        "rarity": "rare",
+        "description": "Un Pokémon de type Roche et Sol, ressemblant à un énorme serpent fait de roches qui se déplace rapidement sous terre.",
+        "nb": 1
+      },
+      {
+        "id": 145,
+        "name": "Électhor",
         "rarity": "legendary",
+        "description": "Un Pokémon légendaire de type Électrik/Vol, l'un des trois oiseaux légendaires, capable de contrôler l'électricité et de provoquer des tempêtes électriques.",
+        "nb": 1
+      },
+      {
+        "id": 115,
+        "name": "Kangourex",
+        "rarity": "legendary",
+        "description": "Un Pokémon de type Normal, ressemblant à un kangourou. Il porte son petit dans sa poche ventrale et protège farouchement sa progéniture.",
         "nb": 1
       }
     ],
-    "lastBooster": 1746551730250,
-    "token": "1854bhegffeiac"
+    "token": "f314bhehbcfeih",
+    "lastBooster": 1747121894486
   }
 ]

@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			<div class="card-header"><?= $card["rarity"] ?></div>
 			<div class="card-body">
 				<h4 class="card-title"><?= $card["name"] ?></h4>
-				<p class="card-text">Some quick example text...</p>
+				<p class="card-text"><?= $card["description"] ?></p>
 			</div>
 		</div>
 	<?php } ?>
