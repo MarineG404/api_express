@@ -18,7 +18,7 @@ function OpenBooster(req, res) {
 		return res.status(401).json({ message: "Token invalide" });
 	}
 
-	if (user.lastBooster && Date.now() - user.lastBooster < 5 * 60) { // 5 minutes
+	if (user.lastBooster && Date.now() - user.lastBooster < 5 * 60 * 1000) { // 5 minutes
 		const remainingMs = 300000 - (Date.now() - user.lastBooster);
 		const remainingSec = Math.floor(remainingMs / 1000);
 		const minutes = Math.floor(remainingSec / 60);

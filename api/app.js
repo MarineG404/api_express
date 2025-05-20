@@ -2,6 +2,10 @@ const express = require("express");
 const users = require("./users");
 const cards = require("./cards");
 const app = express();
+const { DataTypes } = require("sequelize");
+const bdd = require("./db.js");
+const User = require("./Models/User");
+const Card = require("./Models/Card");
 
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +29,16 @@ app.post("/disconnect", users.Disconnect);
 // routes cards
 app.post("/booster", cards.OpenBooster);
 app.get("/cards", cards.GetCards);
-app.post("/convert", cards.Convert)
+app.post("/convert", cards.Convert);
+
+console.log("Démarrage de l'application...");
+bdd.sync()
+	.then(() => {
+		console.log("Modèles synchronisés avec succès.");
+	})
+	.catch((error) => {
+		console.error("Erreur lors de la synchronisation des modèles :", error);
+	});
 
 app.listen(3000, () => {
 	console.log("Serveur démarré sur http://localhost:3000");
