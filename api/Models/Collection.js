@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const bdd = require("../db.js");
+const bdd = require("../utils/db.js");
 
 const Collection = bdd.define("Collection", {
 	userId: DataTypes.INTEGER,

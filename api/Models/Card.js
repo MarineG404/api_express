@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const bdd = require("../db.js");
+const bdd = require("../utils/db.js");
 
 const Card = bdd.define("Card", {
 	id: {

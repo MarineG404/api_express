@@ -4,9 +4,9 @@ const TokenGenerator = require("token-generator")({
 	salt: "your secret ingredient for this magic recipe",
 	timestampMap: 'abcdefghij',
 });
-const User = require("./Models/User.js");
-const Card = require("./Models/Card.js");
-const Collection = require("./Models/Collection.js");
+const User = require("../Models/User.js");
+const Card = require("../Models/Card.js");
+const Collection = require("../Models/Collection.js");
 
 async function RegisterUser(req, res) {
 	if (!req.body) {

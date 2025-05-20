@@ -1,7 +1,7 @@
 const User = require("./User");
 const Card = require("./Card");
 const Collection = require("./Collection");
-const Auction = require("./Auction"); // <-- ajoute cette ligne
+const Auction = require("./Auction");
 
 // Associations
 User.hasMany(Collection, { foreignKey: "userId" });

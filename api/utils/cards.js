@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { Card, User, Collection } = require("./Models");
+const { Card, User, Collection } = require("../Models");
 
 async function OpenBooster(req, res) {
 	if (!req.body) {

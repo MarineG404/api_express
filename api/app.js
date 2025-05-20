@@ -1,9 +1,9 @@
 const express = require("express");
-const users = require("./users");
-const cards = require("./cards");
+const users = require("./utils/users.js");
+const cards = require("./utils/cards.js");
 const app = express();
 const { DataTypes } = require("sequelize");
-const bdd = require("./db.js");
+const bdd = require("./utils/db.js");
 const { User, Card, Collection, Auction } = require("./Models");
 
 // Gérer les données des formulaires correctement.

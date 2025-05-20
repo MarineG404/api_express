@@ -1,6 +1,6 @@
 const bdd = require("./db.js");
-const Card = require("./Models/Card");
-const cards = require("./data/cards.json"); // ton fichier JSON
+const Card = require("../Models/Card.js");
+const cards = require("../data/cards.json"); // ton fichier JSON
 
 const seed = async () => {
 	try {
