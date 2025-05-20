@@ -4,8 +4,7 @@ const cards = require("./cards");
 const app = express();
 const { DataTypes } = require("sequelize");
 const bdd = require("./db.js");
-const User = require("./Models/User");
-const Card = require("./Models/Card");
+const { User, Card, Collection } = require("./Models");
 
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +38,14 @@ bdd.sync()
 	.catch((error) => {
 		console.error("Erreur lors de la synchronisation des modèles :", error);
 	});
+
+// bdd.sync({ force: true })
+//     .then(() => {
+//         console.log("Modèles synchronisés avec succès.");
+//     })
+//     .catch((error) => {
+//         console.error("Erreur lors de la synchronisation des modèles :", error);
+//     });
 
 app.listen(3000, () => {
 	console.log("Serveur démarré sur http://localhost:3000");

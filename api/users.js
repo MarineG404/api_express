@@ -4,10 +4,11 @@ const TokenGenerator = require("token-generator")({
 	salt: "your secret ingredient for this magic recipe",
 	timestampMap: 'abcdefghij',
 });
+const User = require("./Models/User.js");
+const Card = require("./Models/Card.js");
+const Collection = require("./Models/Collection.js");
 
-function RegisterUser(req, res) {
-	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
-
+async function RegisterUser(req, res) {
 	if (!req.body) {
 		res.status(400).json({ "message": "Erreur : Aucune données envoyées" });
 		return;
@@ -21,117 +22,106 @@ function RegisterUser(req, res) {
 	username = req.body.username;
 	password = req.body.password;
 
-	var user = data_users.find(user => user.username === username);
-	if (user) {
+	var existingUser = await User.findOne({ where: { username: username } });
+	if (existingUser) {
 		res.status(409).json({ "message": "Erreur : Utilisateur déjà existant" }); // 409 -> conflict
 		return;
 	}
 
-	bcrypt.hash(password, 10, (err, hash) => {
-		if (err) {
-			res.status(500).json({ "message": "Erreur : Impossible de hacher le mot de passe" });
-			return;
-		};
-
-		var token = TokenGenerator.generate();
-
-		data_users.push(
-			{
-				"id": data_users.length + 1,
-				"username": username,
-				"password": hash,
-				"currency": 0,
-				"collection": [],
-				"token": token
-			}
-		);
-
-		fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
-
-		user_token = data_users.find(user => user.username === username).token;
-		res.json({user_token});
+	var HashedPassword = await bcrypt.hash(password, 10);
+	var token = TokenGenerator.generate();
+	var newUser = await User.create({
+		username: username,
+		password: HashedPassword,
+		currency: 0,
+		token: token
 	});
+
+	return res.status(201).json({ user_token: newUser.token });
 }
 
-function Login(req, res) {
-	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
-
-	if (!req.body) {
-		res.status(400).json({ "message": "Erreur : Aucune données envoyées" });
-		return;
+async function Login(req, res) {
+	if (!req.body || !req.body.username || !req.body.password) {
+		return res.status(400).json({ message: "Username ou mot de passe manquant" });
 	}
 
-	if (!req.body.username || !req.body.password) {
-		res.status(400).json({ "Erreur": "Username ou mot de passe absent" });
-		return;
-	}
+	const { username, password } = req.body;
 
-	username = req.body.username;
-	password = req.body.password;
-
-	var user = data_users.find(user => user.username === username);
+	const user = await User.findOne({ where: { username } });
 
 	if (!user) {
-		res.status(401).json({ "message": "Echec de l'autentification : Utilisateur non trouvé" });
-		return;
+		return res.status(401).json({ message: "Échec de l'authentification : utilisateur non trouvé" });
 	}
 
-	bcrypt.compare(password, user.password, (err, result) => {
+	const passwordMatch = await bcrypt.compare(password, user.password);
 
-		if (!result) {
-			res.status(401).json(
-				{
-					"message": "Echec de l'autentification : mauvais mot de passe"
-				}
-			);
-		} else {
-			var token = TokenGenerator.generate();
-			user.token = token;
-			fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
+	if (!passwordMatch) {
+		return res.status(401).json({ message: "Échec de l'authentification : mot de passe incorrect" });
+	}
 
-			res.json(
-				{
-					message: "Autentification réussie",
-					data: {
-						"token": token
-					},
-				}
-			)
-		}
+	const token = TokenGenerator.generate();
+	user.token = token;
+	await user.save();
+
+	return res.json({
+		message: "Authentification réussie",
+		data: { token }
 	});
 }
 
-function GetUser(req, res) {
-	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
-
-	if (!req.body) {
+async function GetUser(req, res) {
+	if (!req.body || !req.body.token) {
 		return res.status(400).json({ message: "Token manquant" });
 	}
 
-	const token = req.body.token
+	const token = req.body.token;
 
-	const user = data_users.find(user => user.token === token);
+	try {
+		const user = await User.findOne({ where: { token } });
 
-	if (!user) {
-		return res.status(401).json({ message: "Token invalide" });
-	}
+		if (!user) {
+			return res.status(401).json({ message: "Token invalide" });
+		}
 
-	res.json(
-		{
+		// Récupérer la collection de l'utilisateur
+		const collection = await Collection.findAll({
+			where: { userId: user.id },
+			include: [{ model: Card }],
+			raw: true,
+			nest: true
+		});
+
+		const formattedCollection = collection.map(c => ({
+			id: c.Card.id,
+			name: c.Card.name,
+			rarity: c.Card.rarity,
+			description: c.Card.description,
+			nb: c.quantity
+		}));
+
+		// Tri par rareté puis nom
+		const rarityOrder = { common: 0, rare: 1, legendary: 2 };
+		formattedCollection.sort((a, b) => {
+			const rarityDiff = rarityOrder[a.rarity] - rarityOrder[b.rarity];
+			if (rarityDiff !== 0) return rarityDiff;
+			return a.name.localeCompare(b.name);
+		});
+
+		res.json({
 			message: "Utilisateur trouvé",
 			data: {
 				id: user.id,
 				username: user.username,
 				currency: user.currency,
-				collection: user.collection
+				collection: formattedCollection
 			}
-		}
-	)
+		});
+	} catch (error) {
+		res.status(500).json({ message: "Erreur serveur", error: error.message });
+	}
 }
 
-function Disconnect(req, res) {
-	const data_users = JSON.parse(fs.readFileSync("./data/users.json", "utf8"));
-
+async function Disconnect(req, res) {
 	if (!req.body) {
 		return res.status(400).json({ message: "Body manquant" });
 	}
@@ -140,19 +130,19 @@ function Disconnect(req, res) {
 		return res.status(400).json({ message: "Token manquant" });
 	}
 
-	const token = req.body.token
+	const token = req.body.token;
 
-	const user = data_users.find(user => user.token === token);
+	const user = await User.findOne({ where: { token } });
 
 	if (!user) {
 		return res.status(401).json({ message: "Token invalide" });
 	}
 
-	delete user.token;
+	user.token = null;
+	await user.save();
 
-	fs.writeFileSync("./data/users.json", JSON.stringify(data_users, null, 2), "utf8");
+	return res.json({ message: "Déconnexion réussie" });
 
-	res.json({ message: "Déconnexion réussie" });
 }
 
 module.exports = {

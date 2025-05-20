@@ -5,10 +5,10 @@ const User = bdd.define("User", {
 	username: DataTypes.STRING,
 	password: DataTypes.STRING,
 	currency: DataTypes.INTEGER,
-	collection: DataTypes.JSON,
+	lastbooster: DataTypes.DATE,
 	token: DataTypes.STRING,
 }, {
-    tableName: "User"
+	tableName: "User"
 });
 
 module.exports = User;
