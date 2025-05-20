@@ -14,7 +14,6 @@ async function OpenBooster(req, res) {
 		return res.status(401).json({ message: "Token invalide" });
 	}
 
-	// Vérification du cooldown
 	const now = Date.now();
 	if (user.lastbooster && now - user.lastbooster < 5 * 60 * 1000) {
 		const remainingMs = 5 * 60 * 1000 - (now - user.lastbooster);

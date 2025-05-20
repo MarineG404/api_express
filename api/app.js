@@ -4,7 +4,7 @@ const cards = require("./cards");
 const app = express();
 const { DataTypes } = require("sequelize");
 const bdd = require("./db.js");
-const { User, Card, Collection } = require("./Models");
+const { User, Card, Collection, Auction } = require("./Models");
 
 // Gérer les données des formulaires correctement.
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +29,11 @@ app.post("/disconnect", users.Disconnect);
 app.post("/booster", cards.OpenBooster);
 app.get("/cards", cards.GetCards);
 app.post("/convert", cards.Convert);
+
+// app.post("/auction")
+// app.post("/bid")
+// app.get("/auctions")
+// app.get("/close")
 
 console.log("Démarrage de l'application...");
 bdd.sync()
