@@ -11,6 +11,7 @@ Ce projet a été réalisé dans le cadre du cours *API (ExpressJS)*.
 
 * [x] Création et gestion d’une collection de cartes Pokémon
 * [x] Ouverture automatique de boosters toutes les 5 minutes
+* [x] Vendre des doublons
 
 ## 🛠️ Technologies utilisées
 

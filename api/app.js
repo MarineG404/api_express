@@ -30,10 +30,6 @@ app.post("/booster", cards.OpenBooster);
 app.get("/cards", cards.GetCards);
 app.post("/convert", cards.Convert);
 
-// app.post("/auction")
-// app.post("/bid")
-// app.get("/auctions")
-// app.get("/close")
 
 console.log("Démarrage de l'application...");
 bdd.sync()
@@ -43,14 +39,6 @@ bdd.sync()
 	.catch((error) => {
 		console.error("Erreur lors de la synchronisation des modèles :", error);
 	});
-
-// bdd.sync({ force: true })
-//     .then(() => {
-//         console.log("Modèles synchronisés avec succès.");
-//     })
-//     .catch((error) => {
-//         console.error("Erreur lors de la synchronisation des modèles :", error);
-//     });
 
 app.listen(3000, () => {
 	console.log("Serveur démarré sur http://localhost:3000");
