@@ -23,7 +23,7 @@ Ce projet a été réalisé dans le cadre du cours *API (ExpressJS)*.
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/utilisateur/tp-api-tcg.git
+git clone https://github.com/MarineG404/api_express/
 cd tp-api-tcg
 ```
 
